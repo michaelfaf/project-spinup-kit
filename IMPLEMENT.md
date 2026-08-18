@@ -43,7 +43,9 @@ Present each decision point conversationally: context, options with trade-offs, 
 - **B. A dedicated `Projects/` folder (optionally a git repo)** — clean start, easy to version. *Trade-off:* one more place to look.
 - **C. Chat-managed (no file system)** — user keeps STATUS in a note and pastes it each session. *Trade-off:* most friction; only choose if there's genuinely no file access.
 
-**Recommendation:** A if a workspace exists (scan says), otherwise B with git.
+**Recommendation:** A if a workspace exists — meaning an organized folder or vault the user actually works in, not just loose files (loose files → B). 
+
+**Sub-decision, all options: version projects with git?** Recommendation: yes if the scan found git; skip without guilt if the user doesn't use it.
 
 ### DP-2 — Default depth per project?
 
@@ -59,7 +61,9 @@ The source system runs two checks by **fresh-context subagents that never saw th
 
 **Options:**
 - **A. Subagent gates** — strongest check. *Requires* a platform that can spawn subagents (your scan knows).
-- **B. Self-review gates** — you run both checks yourself against a checklist. Weaker (you grade your own homework) but free.
+- **B. Self-review gates** — you run both checks yourself, against this checklist. Weaker (you grade your own homework) but free.
+  - *Plan Check:* Is the premise right — is there a simpler or higher-level way to get the outcome? Does every push have a binary "Done means:"? Any step depend on a tool/fact not verified? What's missing that will surface mid-execution?
+  - *Ship Check:* Does each "Done means:" line pass, checked against the actual output (not memory)? Will any of this have to be redone — and if so, flag it now.
 - **C. No gates** — fastest; mistakes surface later.
 
 **Recommendation:** A if your platform supports subagents; otherwise B. Choose C only for a user who wants minimum ceremony.
@@ -88,12 +92,12 @@ How does the *next* session pick up where this one stopped?
 
 ## Phase 2 — Install
 
-1. Create the template folder at the location from DP-1, named `(PROJECT TEMPLATE)/`, containing the files from `templates/` that match the DP-2/DP-5 choices. Adjust the templates' wording to fit the user's world — their terms, their tools.
-2. **Wire it into your own standing instructions** — this is the step that makes it stick. Add to the user's instructions file (`CLAUDE.md`, `AGENTS.md`, custom instructions — whatever your platform reads every session), merged into what's already there:
+1. Create the template folder at the location from DP-1, named `(PROJECT TEMPLATE)/`, containing the files from `templates/` that match the DP-2/DP-5 choices. Adapt wording minimally — only rename terms that clash with vocabulary the user already uses; otherwise copy as-is.
+2. **Wire it into your own standing instructions** — this is the step that makes it stick. Add to the user's instructions file (`CLAUDE.md`, `AGENTS.md`, custom instructions — whatever your platform reads every session), merged into what's already there. *Watch scope:* some platforms' instruction files are workspace-scoped (e.g. Cursor rules apply only when that folder is open) — place the file where the projects live, and tell the user the convention fires only there:
    - "New project → copy `(PROJECT TEMPLATE)/`, fill in README + STATUS."
    - "Working in a project folder → on entry read its README + STATUS (and the parent's, if nested); on exit update STATUS, append LOG, [write NEXT-CHAT.md]." *(bracket per DP-4)*
    - The gate rule per DP-3.
-3. If git was chosen: init/commit.
+3. If git was chosen (DP-1 sub-decision): init/commit.
 4. Tick Phase 2 in `STATUS.md`.
 
 ## Phase 3 — First live spin-up (the real test)

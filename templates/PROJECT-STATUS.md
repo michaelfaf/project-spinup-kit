@@ -10,6 +10,8 @@
 
 > Legend: `- [ ]` task · 🔴 blocks completion · ⚖️ needs the user's decision · ❓ verify · owner in parens (user/AI/either)
 
+<!-- When a push's "Done means" passes: tick it, move it to Completed, open the next push. Never roll a satisfied push forward with new tasks — rewrite the goal as a new push instead. -->
+
 ### P1 — <push name>
 **Done means:** <one binary line, written before execution starts>
 - [ ] <task> (AI)
