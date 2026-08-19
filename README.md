@@ -2,6 +2,20 @@
 
 A field-tested operating system for running projects with an AI assistant: a small set of files (`README` / `STATUS` / `History`) plus a session protocol (plan → gate → execute → gate → retire) that lets any AI session pick up a project cold and leave it clean. Built and refined in daily use inside a real business; this kit adapts it to *your* setup instead of copying someone else's.
 
+## Read this first — what this is and why
+
+**The problem.** AI assistants have no memory. Every new chat starts from zero: you re-explain the project, the AI re-asks questions you already answered, and work stranded in an old session quietly dies there. The more projects you run, the worse it compounds.
+
+**What this installs.** A minimal operating system for projects. Every project gets the same three-part shape — `README.md` (what this project *is*), `STATUS.md` (where it stands right now), `History/` (what already happened) — plus a session ritual your AI follows every time it touches a project: read the state, plan, get your go-ahead, execute, then retire cleanly so the next session can pick up cold.
+
+**Why it works.** The project's memory lives in files, not in any chat. A chat can die, compact, or be three weeks old — the project doesn't care. Any AI session (or human) opens the folder and knows exactly where things stand and what's next.
+
+**Use it if:** you run two or more ongoing projects with an AI assistant · you've lost work to a dead chat · you're tired of re-explaining context · you want anyone to open a project cold and know its state in one read.
+
+**It is not** project-management software or tied to one AI vendor. It's plain markdown files and a habit.
+
+**→ Want the full picture before deciding? Read [OVERVIEW.md](OVERVIEW.md)** — every concept, what a working session looks like, what gets installed, and your role vs your AI's, in about five minutes.
+
 ## How to use this kit
 
 **If you use an AI coding assistant** (Claude Code, Codex, Cursor, Cline, Copilot, etc.):
@@ -24,6 +38,7 @@ Read `IMPLEMENT.md` yourself — every step is doable by hand. The decision poin
 
 | File | What it is |
 |---|---|
+| `OVERVIEW.md` | The full explanation — read this first to understand the system before installing |
 | `IMPLEMENT.md` | The full setup walkthrough (written for your AI to execute, readable by humans) |
 | `STATUS.md` | Progress checklist — your AI checks things off and records your decisions here |
 | `AGENTS.md` / `CLAUDE.md` | Entry points so coding agents auto-orient when opening this repo |
