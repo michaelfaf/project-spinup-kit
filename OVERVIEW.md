@@ -15,7 +15,7 @@ The fix is not a bigger context window or a memory feature — those are invisib
 
 ## The core idea
 
-Every project is a folder with a small, fixed file set, and every AI session follows the same ritual: **enter by reading the state, work, exit by writing the state back.** That's the whole system. Everything below is the detail that makes it hold up in practice.
+Every project is a folder with a small, fixed file set, and every AI session follows the same ritual: **enter by reading the state, work, retire by writing the state back.** That's the whole system. Everything below is the detail that makes it hold up in practice.
 
 ## The concepts
 
@@ -35,7 +35,7 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 3. **Gate** (optional — one install decision governs both gates) — the Plan Check, before executing.
 4. **Execute** — work the board.
 5. **Gate** (same install decision) — the Ship Check, after executing.
-6. **Retire** — update STATUS's dated position, tick the board, append the session to LOG, and write the handoff. A session that skips retirement strands its work — retiring properly is the non-negotiable step.
+6. **Retire** — update STATUS's dated position, tick the board, append the session to LOG, and write the handoff (if your install uses one). A session that skips retirement strands its work — retiring properly is the non-negotiable step.
 
 **"Done means:" lines.** Every push on the board gets one line stating what done looks like, in binary, testable terms — written before the work starts. This is what makes the ship check possible and stops "mostly done" from living on a board for weeks.
 
@@ -49,7 +49,7 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 
 **The template folder.** One `(PROJECT TEMPLATE)/` folder in your workspace containing the file set. Spinning up a new project = copy it, fill in README and STATUS. Ten minutes, same shape every time.
 
-**The instructions-file wiring.** One short block added to your AI's standing instructions (CLAUDE.md, AGENTS.md, custom instructions — whatever it reads every session): new project → copy the template; entering a project folder → read README + STATUS; exiting → update STATUS, append LOG, write the handoff. This is the step that makes the system automatic instead of a thing you have to remember to ask for.
+**The instructions-file wiring.** One short block added to your AI's standing instructions (CLAUDE.md, AGENTS.md, custom instructions — whatever it reads every session): new project → copy the template; entering a project folder → read README + STATUS; retiring → update STATUS, append LOG, write the handoff (if your install uses one). This is the step that makes the system automatic instead of a thing you have to remember to ask for.
 
 ## What a week with this looks like
 

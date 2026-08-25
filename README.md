@@ -6,7 +6,7 @@ A field-tested operating system for running projects with an AI assistant: a sma
 
 **The problem.** AI assistants have no memory. Every new chat starts from zero: you re-explain the project, the AI re-asks questions you already answered, and work stranded in an old session quietly dies there. The more projects you run, the worse it compounds.
 
-**What this installs.** A minimal operating system for projects. Every project gets the same three-part shape — `README.md` (what this project *is*), `STATUS.md` (where it stands right now), `History/` (what already happened) — plus a session ritual your AI follows every time it touches a project: read the state, plan, get your go-ahead, execute, then retire cleanly so the next session can pick up cold.
+**What this installs.** A minimal operating system for projects. Every project gets the same three-part shape — `README.md` (what this project *is*), `STATUS.md` (where it stands right now), `History/` (what already happened) — plus a session ritual your AI follows every time it touches a project: read the state, plan, check the plan, execute, check the work, then retire cleanly so the next session can pick up cold.
 
 **Why it works.** The project's memory lives in files, not in any chat. A chat can die, compact, or be three weeks old — the project doesn't care. Any AI session (or human) opens the folder and knows exactly where things stand and what's next.
 
@@ -32,7 +32,7 @@ A field-tested operating system for running projects with an AI assistant: a sma
 
 **If you have no AI assistant:**
 
-Read `IMPLEMENT.md` yourself — every step is doable by hand. The decision points tell you the trade-offs; the `templates/` folder has every file you'll create.
+Read `IMPLEMENT.md` and `SYSTEM.md` yourself — every step is doable by hand. The decision points tell you the trade-offs; the `templates/` folder has every file you'll create.
 
 ## What's in here
 
@@ -49,4 +49,4 @@ Read `IMPLEMENT.md` yourself — every step is doable by hand. The decision poin
 
 - A project-template folder in your workspace your AI copies for every new project
 - A convention: identity in `README.md`, current state in `STATUS.md`, everything else in `History/`
-- A session protocol your AI follows: enter with context, exit with a clean handoff — so no chat session ever strands your work
+- A session protocol your AI follows: enter with context, retire with a clean handoff — so no chat session ever strands your work

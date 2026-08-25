@@ -1,8 +1,8 @@
 # Brief NNN — <decision title>
 
 <!-- One brief per researched decision (DP-5 = C), numbered in the order raised.
-A brief ends in a lean, never a ruling — the user rules. Where ruled briefs are
-filed afterward is your install's convention. -->
+A brief ends in a lean, never a ruling — the user rules. Where briefs live is
+your install's convention — not yet standardized. -->
 
 ## Question
 

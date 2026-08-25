@@ -40,7 +40,7 @@
 ### Phase 3 — First live spin-up
 - [ ] Real project chosen and intake done
 - [ ] Project folder created from template (README + STATUS with "Done means:" lines)
-- [ ] One full session run: plan → execute → retire
+- [ ] One full session run: enter → plan → [gate] → execute → [gate] → retire
 - [ ] Cold-read test passed (project summarized from README + STATUS alone)
 
 ### Phase 4 — Wrap up

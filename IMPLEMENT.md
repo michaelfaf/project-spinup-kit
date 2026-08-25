@@ -12,7 +12,8 @@ The system defined normatively in `SYSTEM.md` — a convention where every proje
 | `STATUS.md` | **Current state only** — dated position lines, a task board, blockers | Every session retire |
 | `History/LOG.md` | Rolling session log, newest first | Every session retire (append) |
 | `History/LESSONS.md` *(if DP-5 = B or C)* | Append-only lessons (what happened / why / rule going forward) | When a lesson lands |
-| `NEXT-CHAT.md` *(if DP-4 = A)* | Handoff — the opening prompt for the next session | At retire while a multi-session push is live; deleted when the push ends |
+| `NEXT-CHAT.md` *(if DP-4 = A)* | Handoff — the opening prompt for the next session | At retire while a multi-session push (a push: one unit of outcome, `SYSTEM.md` §3) is live; deleted when the push ends |
+| Decision briefs *(if DP-5 = C)* | One numbered brief per researched decision, ending in a *lean, never a ruling* | When a decision needs research |
 
 …plus a session protocol — enter → plan → gate → execute → gate → retire, specified in `SYSTEM.md` §4: every session **enters** by reading README + STATUS and **retires** by writing the state back, so no project ever depends on a chat that died.
 
@@ -52,7 +53,7 @@ Present each decision point conversationally: context, options with trade-offs, 
 
 **Options:**
 - **A. Light (recommended):** `README.md` + 5-line `STATUS.md`, empty `History/`. Files grow only when the work earns it.
-- **B. Full from day one:** all files pre-created (except `NEXT-CHAT.md`, which only ever exists between a retire and its push's end). *Trade-off:* scaffolding for projects that may die young; empty files rot.
+- **B. Full from day one:** all files pre-created (except `NEXT-CHAT.md` and decision briefs, which are only ever created when the work calls for them). *Trade-off:* scaffolding for projects that may die young; empty files rot.
 
 **Recommendation:** A. Depth scales; nothing grows until the work earns it.
 
@@ -94,7 +95,7 @@ How does the *next* session pick up where this one stopped?
 1. Create the template folder at the location from DP-1, named `(PROJECT TEMPLATE)/`, containing the files from `templates/` that match the DP-4/DP-5 choices — use the table in `templates/README.md` for which files install and what each is renamed to (e.g. `PROJECT-README.md` → `README.md`). DP-2 governs how much of it each new project starts with, not which files belong to the install. Adapt wording minimally — only rename terms that clash with vocabulary the user already uses; otherwise copy as-is.
 2. **Wire it into your own standing instructions** — this is the step that makes it stick. Add to the user's instructions file (`CLAUDE.md`, `AGENTS.md`, custom instructions — whatever your platform reads every session), merged into what's already there. *Watch scope:* some platforms' instruction files are workspace-scoped (e.g. Cursor rules apply only when that folder is open) — place the file where the projects live, and tell the user the convention fires only there:
    - "New project → copy `(PROJECT TEMPLATE)/`, fill in README + STATUS."
-   - "Working in a project folder → on entry read its README + STATUS (and the parent's, if nested); on retire update STATUS, append LOG, [write NEXT-CHAT.md]." *(bracket per DP-4)*
+   - "Working in a project folder → on entry read its README + STATUS (and the parent's, if nested); on retire (when you finish working the folder) update STATUS, append LOG, [write NEXT-CHAT.md]." *(bracket per DP-4)*
    - The gate rule per DP-3.
 3. If git was chosen (DP-1 sub-decision): init/commit.
 4. Tick Phase 2 in `STATUS.md`.
@@ -103,7 +104,7 @@ How does the *next* session pick up where this one stopped?
 
 Ask the user for one real project — something actually on their plate. Intake, conversationally: name · what should an AI be able to *do* from this folder · what inputs exist to pull in · what done looks like · any guardrails. Then:
 
-1. Copy the template, fill README (identity, standing rules) and STATUS (a board with 1–3 pushes — a push is a unit of outcome, `SYSTEM.md` §3 — each with a one-line binary **"Done means:"** written *before* execution).
+1. Copy the template, fill README (identity, standing rules) and STATUS (a board with 1–3 pushes, each with a one-line binary **"Done means:"** written *before* execution).
 2. Run one working session on it end to end — enter, plan, [gate], execute a first task, [gate], **retire properly**: update STATUS's dated position line, tick the board, append LOG, write the handoff (DP-4).
 3. Show the user the retired folder. The system is installed only when a *fresh* session can open that folder cold and know exactly where things stand — verify by summarizing the project *only* from README + STATUS.
 
@@ -111,7 +112,7 @@ Ask the user for one real project — something actually on their plate. Intake,
 
 - Walk the user through what got installed and where (one short list).
 - Tick everything remaining in `STATUS.md`, record final state.
-- Leave them the habit in one line: **"Every session: enter by reading STATUS, exit by updating it."**
+- Leave them the habit in one line: **"Every session: enter by reading STATUS, retire by updating it."**
 - Optional: delete this kit repo — the system now lives in their workspace. (Keep it if they want to re-run or share it.)
 
 ---
