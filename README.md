@@ -1,6 +1,6 @@
 # Project Spin-Up Kit
 
-A field-tested operating system for running projects with an AI assistant: a small set of files (`README` / `STATUS` / `History`) plus a session protocol (plan → gate → execute → gate → retire) that lets any AI session pick up a project cold and leave it clean. Built and refined in daily use inside a real business; this kit adapts it to *your* setup instead of copying someone else's.
+A field-tested operating system for running projects with an AI assistant: a small set of files per project (`README.md` / `STATUS.md` / a `History/` folder) plus a session protocol (enter → plan → gate → execute → gate → retire) that lets any AI session pick up a project cold and leave it clean. Built and refined in daily use inside a real business; this kit adapts it to *your* setup instead of copying someone else's.
 
 ## Read this first — what this is and why
 
@@ -26,7 +26,7 @@ A field-tested operating system for running projects with an AI assistant: a sma
 
 **If you use a chat AI** (claude.ai, ChatGPT) without file access:
 
-1. Paste the contents of `IMPLEMENT.md` into a chat.
+1. Paste the contents of `IMPLEMENT.md` (and `SYSTEM.md`, the rules it installs) into a chat.
 2. Say: "Walk me through this. I'll create the files by hand as you go."
 3. Keep `STATUS.md` yourself (a note or doc) and paste it back at the start of each new chat.
 

@@ -23,4 +23,4 @@ The mechanism in brief — enough that a fresh AI session understands the moving
 ## Pointers
 
 - `STATUS.md` — current state, board, next actions
-- `History/` — log, lessons, superseded docs
+- `History/` — log, lessons

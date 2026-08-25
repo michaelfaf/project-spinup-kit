@@ -22,7 +22,7 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 **The three jobs: identity, state, history.** Every piece of project information has exactly one of three jobs, and each job has exactly one home:
 
 - **`README.md` — identity.** What the project is, why it exists, how it works, its standing rules and locked decisions. Changes only when scope or a decision changes. Never holds current state.
-- **`STATUS.md` — current state, only.** A dated position line ("where we are as of…"), a task board, and blockers. Updated at every session exit. This is the file a fresh session reads to know exactly where things stand.
+- **`STATUS.md` — current state, only.** A dated position line ("where we are as of…"), a task board, and blockers. Updated at every retire. This is the file a fresh session reads to know exactly where things stand.
 - **`History/` — everything that already happened.** A rolling session log (`LOG.md`, newest first) and an append-only lessons file (`LESSONS.md`).
 
 **The one-file rule.** One fact lives in exactly one file; everything else points at it. Duplicate a fact and the copies will disagree within a month.
@@ -31,17 +31,17 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 
 **The session protocol.** Every working session on a project has the same shape:
 1. **Enter** — read README + STATUS (and the parent project's, if nested). Now the AI knows the project cold.
-2. **Plan** — what this session will do, with each push carrying a binary **"Done means:"** line written *before* execution (so "done" is checkable, not vibes).
-3. **Gate** (optional, your install decision) — a plan check before executing.
+2. **Plan** — what this session will do, with each push (a push is one unit of outcome on the board) carrying a binary **"Done means:"** line written *before* execution (so "done" is checkable, not vibes).
+3. **Gate** (optional — one install decision governs both gates) — the Plan Check, before executing.
 4. **Execute** — work the board.
-5. **Gate** — a ship check after executing.
+5. **Gate** (same install decision) — the Ship Check, after executing.
 6. **Retire** — update STATUS's dated position, tick the board, append the session to LOG, and write the handoff. A session that skips retirement strands its work — retiring properly is the non-negotiable step.
 
 **"Done means:" lines.** Every push on the board gets one line stating what done looks like, in binary, testable terms — written before the work starts. This is what makes the ship check possible and stops "mostly done" from living on a board for weeks.
 
 **Quality gates (Plan Check and Ship Check).** Two checks run by fresh eyes — ideally a subagent that never saw the working conversation, otherwise the AI reviewing itself against a fixed checklist. The Plan Check challenges the premise first ("is there a simpler way to get this outcome?") before checking correctness. The Ship Check verifies each "Done means:" line against actual output — not memory — and asks "will any of this have to be redone?" How strong your gates are is one of the five install decisions.
 
-**The handoff (`NEXT-CHAT.md`).** On retirement, the session writes the opening prompt for the *next* session into the project folder, and the next session starts by reading it. The principle: **prompts live on disk, not in chat — the chat can die; the work can't.** Deleted when the push ends.
+**The handoff (`NEXT-CHAT.md`).** On retirement — while a multi-session push is live — the session writes the opening prompt for the *next* session into the project folder, and the next session starts by reading it. The principle: **prompts live on disk, not in chat — the chat can die; the work can't.** Deleted when the push ends.
 
 **Lessons.** 2–4 lines each, appended to `History/LESSONS.md` when something teaches you something: what happened, why, the rule going forward. A lesson that should change future behavior gets *promoted* — with your sign-off — into the project README's standing rules, where every future session will obey it. This is the compounding loop: projects get smarter, not just older.
 

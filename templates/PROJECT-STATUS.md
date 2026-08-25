@@ -1,10 +1,10 @@
-<!-- Template. CURRENT STATE ONLY — the test: "would an AI loading current state need this paragraph?" No → History/ at next session exit. Delete unused sections; depth scales with the project. -->
+<!-- Template. CURRENT STATE ONLY — the test: "Would an agent loading current state need this paragraph?" No → History/ at next retire. Delete unused sections; depth scales with the project. -->
 
 # Status — <PROJECT NAME>
 
 ## Current position
 
-<1–3 dated lines. What just happened, what's live right now. Updated every session exit.>
+<1–3 dated lines. What just happened, what's live right now. Updated at every retire.>
 
 ## Board
 

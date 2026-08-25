@@ -9,13 +9,14 @@ The system defined normatively in `SYSTEM.md` — a convention where every proje
 | File | Job | Updated when |
 |---|---|---|
 | `README.md` | Identity — what/why/how it works, standing rules, locked decisions | Scope or a decision changes. Never holds state. |
-| `STATUS.md` | **Current state only** — dated position lines, a task board, blockers | Every working-session exit |
-| `History/LOG.md` | Rolling session log, newest first | Every session exit |
-| `History/LESSONS.md` | Append-only lessons (what happened / why / rule going forward) | When a lesson lands |
+| `STATUS.md` | **Current state only** — dated position lines, a task board, blockers | Every session retire |
+| `History/LOG.md` | Rolling session log, newest first | Every session retire (append) |
+| `History/LESSONS.md` *(if DP-5 = B or C)* | Append-only lessons (what happened / why / rule going forward) | When a lesson lands |
+| `NEXT-CHAT.md` *(if DP-4 = A)* | Handoff — the opening prompt for the next session | At retire while a multi-session push is live; deleted when the push ends |
 
-…plus a session protocol: any AI session **enters** by reading README + STATUS, works the board, and **retires** by updating STATUS, logging, and writing a handoff — so no project ever depends on a chat that died.
+…plus a session protocol — enter → plan → gate → execute → gate → retire, specified in `SYSTEM.md` §4: every session **enters** by reading README + STATUS and **retires** by writing the state back, so no project ever depends on a chat that died.
 
-The core discipline is one test, applied to STATUS constantly: *"Would an agent loading current state need this paragraph?"* No → it moves to History. Identity in README, state in STATUS, everything else in History. **One fact lives in exactly one file; everything else points at it.**
+The core discipline is the **STATUS test** and the **one-fact rule** (`SYSTEM.md` §1–§2): identity in README, state in STATUS, everything else in History; one fact lives in exactly one file, and everything else points at it.
 
 ---
 
@@ -51,19 +52,17 @@ Present each decision point conversationally: context, options with trade-offs, 
 
 **Options:**
 - **A. Light (recommended):** `README.md` + 5-line `STATUS.md`, empty `History/`. Files grow only when the work earns it.
-- **B. Full from day one:** all files pre-created. *Trade-off:* scaffolding for projects that may die young; empty files rot.
+- **B. Full from day one:** all files pre-created (except `NEXT-CHAT.md`, which only ever exists between a retire and its push's end). *Trade-off:* scaffolding for projects that may die young; empty files rot.
 
 **Recommendation:** A. Depth scales; nothing grows until the work earns it.
 
 ### DP-3 — Quality gates?
 
-The source system runs two checks by **fresh-context subagents that never saw the working conversation** (fresh eyes are the point): a **Plan Check** after planning (challenge the premise first, correctness last) and a **Ship Check** after execution (verify each "Done means" line, then "will we have to redo this?").
+The system runs two checks — a **Plan Check** after planning (challenge the premise first, correctness last) and a **Ship Check** after execution (verify each "Done means" line, then "will we have to redo this?"). Fresh eyes are the point; both checklists live verbatim in `SYSTEM.md` §5.
 
 **Options:**
-- **A. Subagent gates** — strongest check. *Requires* a platform that can spawn subagents (your scan knows).
-- **B. Self-review gates** — you run both checks yourself, against this checklist. Weaker (you grade your own homework) but free.
-  - *Plan Check:* Is the premise right — is there a simpler or higher-level way to get the outcome? Does every push have a binary "Done means:"? Any step depend on a tool/fact not verified? What's missing that will surface mid-execution?
-  - *Ship Check:* Does each "Done means:" line pass, checked against the actual output (not memory)? Will any of this have to be redone — and if so, flag it now.
+- **A. Subagent gates** — fresh-context subagents that never saw the working conversation run the checks. Strongest. *Requires* a platform that can spawn subagents (your scan knows).
+- **B. Self-review gates** — you run both checks yourself, verbatim against the checklists in `SYSTEM.md` §5. Weaker (you grade your own homework) but free.
 - **C. No gates** — fastest; mistakes surface later.
 
 **Recommendation:** A if your platform supports subagents; otherwise B. Choose C only for a user who wants minimum ceremony.
@@ -73,7 +72,7 @@ The source system runs two checks by **fresh-context subagents that never saw th
 How does the *next* session pick up where this one stopped?
 
 **Options:**
-- **A. `NEXT-CHAT.md` file** — on retire, write the opening prompt for the next session into the project folder; delete it when the push ends. Works on every file-capable platform.
+- **A. `NEXT-CHAT.md` file** — at retire, while a multi-session push is live, write the opening prompt for the next session into the project folder; delete it when the push ends. Works on every file-capable platform.
 - **B. Platform memory** — if your platform has persistent cross-session memory, STATUS + memory may suffice. *Trade-off:* memory is invisible and unauditable; files are checkable.
 - **C. Manual paste** — chat-only users paste STATUS at session start.
 
@@ -83,8 +82,8 @@ How does the *next* session pick up where this one stopped?
 
 **Options:**
 - **A. LOG only** — one rolling session log. Simplest.
-- **B. LOG + LESSONS (recommended)** — lessons are the compounding asset: 2–4 lines each, and a lesson that should change future behavior gets promoted into the project README's standing rules (with the user's sign-off).
-- **C. Full: LOG + LESSONS + Decision Briefs** — researched decisions each get a numbered brief ending in a *lean, never a ruling* (the user rules). Add this tier when decisions start needing real research.
+- **B. LOG + LESSONS (recommended)** — lessons are the compounding asset; format and promotion rule in `SYSTEM.md` §6.
+- **C. Full: LOG + LESSONS + Decision Briefs** — researched decisions each get a numbered brief (template: `templates/DECISION-BRIEF.md`) ending in a *lean, never a ruling* (the user rules). Add this tier when decisions start needing real research.
 
 **Recommendation:** B now; graduate to C when it's earned.
 
@@ -92,10 +91,10 @@ How does the *next* session pick up where this one stopped?
 
 ## Phase 2 — Install
 
-1. Create the template folder at the location from DP-1, named `(PROJECT TEMPLATE)/`, containing the files from `templates/` that match the DP-2/DP-5 choices. Adapt wording minimally — only rename terms that clash with vocabulary the user already uses; otherwise copy as-is.
+1. Create the template folder at the location from DP-1, named `(PROJECT TEMPLATE)/`, containing the files from `templates/` that match the DP-4/DP-5 choices — use the table in `templates/README.md` for which files install and what each is renamed to (e.g. `PROJECT-README.md` → `README.md`). DP-2 governs how much of it each new project starts with, not which files belong to the install. Adapt wording minimally — only rename terms that clash with vocabulary the user already uses; otherwise copy as-is.
 2. **Wire it into your own standing instructions** — this is the step that makes it stick. Add to the user's instructions file (`CLAUDE.md`, `AGENTS.md`, custom instructions — whatever your platform reads every session), merged into what's already there. *Watch scope:* some platforms' instruction files are workspace-scoped (e.g. Cursor rules apply only when that folder is open) — place the file where the projects live, and tell the user the convention fires only there:
    - "New project → copy `(PROJECT TEMPLATE)/`, fill in README + STATUS."
-   - "Working in a project folder → on entry read its README + STATUS (and the parent's, if nested); on exit update STATUS, append LOG, [write NEXT-CHAT.md]." *(bracket per DP-4)*
+   - "Working in a project folder → on entry read its README + STATUS (and the parent's, if nested); on retire update STATUS, append LOG, [write NEXT-CHAT.md]." *(bracket per DP-4)*
    - The gate rule per DP-3.
 3. If git was chosen (DP-1 sub-decision): init/commit.
 4. Tick Phase 2 in `STATUS.md`.
@@ -104,8 +103,8 @@ How does the *next* session pick up where this one stopped?
 
 Ask the user for one real project — something actually on their plate. Intake, conversationally: name · what should an AI be able to *do* from this folder · what inputs exist to pull in · what done looks like · any guardrails. Then:
 
-1. Copy the template, fill README (identity, standing rules) and STATUS (a board with 1–3 pushes, each with a one-line binary **"Done means:"** written *before* execution).
-2. Run one working session on it end to end — plan, [gate], execute a first task, [gate], **retire properly**: update STATUS's dated position line, tick the board, append LOG, write the handoff (DP-4).
+1. Copy the template, fill README (identity, standing rules) and STATUS (a board with 1–3 pushes — a push is a unit of outcome, `SYSTEM.md` §3 — each with a one-line binary **"Done means:"** written *before* execution).
+2. Run one working session on it end to end — enter, plan, [gate], execute a first task, [gate], **retire properly**: update STATUS's dated position line, tick the board, append LOG, write the handoff (DP-4).
 3. Show the user the retired folder. The system is installed only when a *fresh* session can open that folder cold and know exactly where things stand — verify by summarizing the project *only* from README + STATUS.
 
 ## Phase 4 — Wrap up

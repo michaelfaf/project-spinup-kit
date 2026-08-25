@@ -21,6 +21,13 @@
 
 ## Tier 1 — obvious fixes
 
+> **Status: approved by Mike 2026-08-25 and implemented on this branch.** Notes from
+> execution: templates keep their brief in-place instructions (they ship into
+> workspaces where the kit may not exist, so self-containment beats strict dedup —
+> wording aligned instead); "superseded docs" was deleted rather than defined
+> (defining it would be a new design decision); the chat-AI path in README now says to
+> paste SYSTEM.md alongside IMPLEMENT.md, since the gate checklists moved there.
+
 ### R1. Make the docs agree with themselves (consistency bundle)
 The sweep found the same rule stated differently across files. Fixes, none changing
 what the system *means*:

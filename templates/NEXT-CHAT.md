@@ -14,4 +14,4 @@ Read this project's README.md and STATUS.md first.
 
 **Open threads:** <anything unresolved>
 
-*Session protocol: enter by reading README + STATUS; exit by updating STATUS, appending History/LOG, and rewriting this file.*
+*Session protocol: enter by reading README + STATUS; retire by updating STATUS, appending History/LOG, and rewriting this file.*
