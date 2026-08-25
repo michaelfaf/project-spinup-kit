@@ -22,9 +22,10 @@ Everything else in this document derives from six rules:
   (§2). Information in the wrong home is a defect.
 - **I4 — One fact, one file.** One fact lives in exactly one file; every other mention
   points at it. A duplicated fact is a defect even while the copies still agree.
-- **I5 — Sessions enter and retire.** Every working session enters by reading the
-  project's state and retires by writing the state back (§4). A session that skips
-  retirement has stranded its work; retiring properly is the non-negotiable step.
+- **I5 — Sessions enter and retire.** Every push session enters by reading the
+  project's state and retires by writing the state back; a touch (§4) is the one named
+  exception. A session that skips retirement has stranded its work; retiring properly
+  is the non-negotiable step.
 - **I6 — Done is declared before the work.** Every push carries a binary "Done means:"
   line written before execution starts, and is verified against actual output — never
   against memory (§3, §5).
@@ -73,7 +74,7 @@ scales: files grow only when the work earns it.
 | File | Job | Updated when |
 |---|---|---|
 | `PORTFOLIO.md` | One row per project: name · state · last touched · next action · waiting-on. **STATUS wins on disagreement** — a stale row is rewritten, never trusted | Every retire; read by the weekly review (§8) |
-| `LESSONS.md` | General lessons — true everywhere, not just in one project (§6) | When a general lesson is promoted |
+| `LESSONS.md` *(DP-5 = A)* | General lessons — true everywhere, not just in one project (§6) | When a general lesson is promoted |
 | `SYSTEM.md` | This spec, minus §12 — installed so the rules survive the kit and any AI can read them | When the kit's spec is updated |
 
 **Filenames are conventions; jobs are the system.** An install may keep a user's
@@ -171,8 +172,9 @@ visible data, not a silent nothing. On `fail`: revise once and re-check; a secon
 - A lesson that should change future behavior is **promoted** — and promotion asks one
   routing question first: *"true only here, or everywhere?"*
   - **Only here** → the project README's standing rules.
-  - **Everywhere** → the workspace `LESSONS.md`; standing ones are copied into the
-    user's AI instructions file (capped — prune at the weekly review).
+  - **Everywhere** → per configuration (DP-5): under **A**, the workspace `LESSONS.md`,
+    with standing ones copied into the user's AI instructions file; under **B**,
+    straight to the instructions file. Either way capped — prune at the weekly review.
 - Promotion never happens without the user's sign-off. The weekly review (§8) surfaces
   the pending-promotion queue, because sign-offs otherwise never happen.
 

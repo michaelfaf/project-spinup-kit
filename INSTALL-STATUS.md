@@ -37,7 +37,7 @@
 
 ### Phase 2 — Install
 - [ ] `(PROJECT TEMPLATE)/` created at chosen location, adapted to user's world
-- [ ] Workspace files created: `PORTFOLIO.md`, `LESSONS.md`, `SYSTEM.md` (minus §12)
+- [ ] Workspace files created: `PORTFOLIO.md`, `LESSONS.md` (DP-5 = A), `REVIEW.md`, `SYSTEM.md` (minus §12)
 - [ ] Convention wired into the user's AI instructions file (incl. review day, gate rule, files-authoritative)
 - [ ] Git initialized/committed (if available)
 

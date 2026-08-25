@@ -11,4 +11,4 @@ The files the implementing AI copies (and adapts) into the user's workspace. Pro
 | `NEXT-CHAT.md` | file-capable installs (not DP-1 C) | created at retire while a multi-session push is live — never pre-created |
 | `DECISION-BRIEF.md` → `History/Decisions/NNN-topic.md` | always, in the template folder | a decision first needs real research — never pre-created |
 | `PORTFOLIO.md` | workspace root | at install |
-| `REVIEW.md` | reference for the weekly review report | each review day — never pre-created |
+| `REVIEW.md` | workspace root (weekly-review format reference) | a report is written each review day |

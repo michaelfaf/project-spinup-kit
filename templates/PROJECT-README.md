@@ -18,7 +18,7 @@ The mechanism in brief — enough that a fresh AI session understands the moving
 
 | Decision | Decided | Where the detail lives |
 |---|---|---|
-| <what was decided> | <initials, YYYY-MM-DD> | <owner file> |
+| <what was decided> | <initials, YYYY-MM-DD> | <owner file, or History/Decisions/NNN-topic.md> |
 
 ## Pointers
 

@@ -22,10 +22,12 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 **The three jobs: identity, state, history.** Every piece of project information has exactly one of three jobs, and each job has exactly one home:
 
 - **`README.md` — identity.** What the project is, why it exists, how it works, its standing rules and locked decisions. Changes only when scope or a decision changes. Never holds current state.
-- **`STATUS.md` — current state, only.** A dated position line ("where we are as of…"), a task board, and blockers. Updated at every retire. This is the file a fresh session reads to know exactly where things stand.
-- **`History/` — everything that already happened.** A rolling session log (`LOG.md`, newest first) and an append-only lessons file (`LESSONS.md`).
+- **`STATUS.md` — current state, only.** A state line (active / parked / waiting-external / done), a dated position line ("where we are as of…"), the task board, what you're waiting on from others (with chase dates), recurring work, an inbox for notes dropped in by other projects' sessions, and blockers. Hard-capped at about one screen, every date from the real clock — never assumed. Updated at every retire. This is the file a fresh session reads to know exactly where things stand.
+- **`History/` — everything that already happened.** A chronological, append-only session log (`LOG.md`, newest entry at the end, rotated yearly, never rewritten), an append-only lessons file (`LESSONS.md`), and decision briefs tucked in `Decisions/`.
 
 **The one-file rule.** One fact lives in exactly one file; everything else points at it. Duplicate a fact and the copies will disagree within a month.
+
+**Files are authoritative.** AI memory features run alongside the files and will eventually contradict them — remembering a decision you later reversed. When that happens, the file wins and the memory gets corrected. And because two chats can open one project at once, a session marks itself in STATUS on entry (`Session open:`) and clears the mark at retire — a second session sees a fresh mark and asks before proceeding.
 
 **The STATUS test.** The discipline that keeps STATUS.md readable is a single question applied constantly: *"Would an agent loading current state need this paragraph?"* No → it moves to History. A STATUS file that scrolls is a STATUS file that's failed.
 
@@ -41,7 +43,7 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 
 **"Done means:" lines.** Every push on the board gets one line stating what done looks like, in binary, testable terms — written before the work starts. This is what makes the ship check possible and stops "mostly done" from living on a board for weeks.
 
-**Quality gates (Plan Check and Ship Check).** Two checks run by fresh eyes — ideally a subagent that never saw the working conversation, otherwise the AI reviewing itself against a fixed checklist. The Plan Check challenges the premise first ("is there a simpler way to get this outcome?") before checking correctness. The Ship Check verifies each "Done means:" line against actual output — not memory — and asks "will any of this have to be redone?" How strong your gates are is one of the five install decisions.
+**Quality gates (Plan Check and Ship Check).** Two checks run by fresh eyes — ideally a subagent that never saw the working conversation, otherwise the AI reviewing itself against a fixed checklist. The Plan Check challenges the premise first ("is there a simpler way to get this outcome?") before checking correctness. The Ship Check verifies each "Done means:" line against actual output — not memory — and asks "will any of this have to be redone?" — quoting evidence, never asserting from memory. Every gate leaves a one-word verdict in the session log, *skipped* included, so erosion stays visible. How strong your gates are is one of the five install decisions.
 
 **The handoff (`NEXT-CHAT.md`).** On retirement — while a multi-session push is live — the session writes the 2–4 lines the next session *can't* get from STATUS ("start with…", "watch out for…") into the project folder. The principle: **prompts live on disk, not in chat — the chat can die; the work can't.** Deleted when the push ends; and if it ever disagrees with STATUS, STATUS wins.
 
@@ -55,7 +57,7 @@ Every project is a folder with a small, fixed file set, and every AI session fol
 
 **The template folder.** One `(PROJECT TEMPLATE)/` folder in your workspace containing the file set. Spinning up a new project = copy it, fill in README and STATUS. Ten minutes, same shape every time.
 
-**The instructions-file wiring.** One short block added to your AI's standing instructions (CLAUDE.md, AGENTS.md, custom instructions — whatever it reads every session): new project → copy the template; entering a project folder → read README + STATUS; retiring → update STATUS, append LOG, write the handoff (if your install uses one). This is the step that makes the system automatic instead of a thing you have to remember to ask for.
+**The instructions-file wiring.** One short block added to your AI's standing instructions (CLAUDE.md, AGENTS.md, custom instructions — whatever it reads every session): the rules live in `SYSTEM.md`; new project → copy the template; one-task ask → a touch, no ceremony; entering a project folder → read README + STATUS and run the entry checks; retiring → the close-out checklist; once a week → the review. This is the step that makes the system automatic instead of a thing you have to remember to ask for.
 
 ## What a week with this looks like
 

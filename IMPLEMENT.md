@@ -9,7 +9,7 @@ The system defined normatively in `SYSTEM.md` — a convention where every proje
 | File | Job | Updated when |
 |---|---|---|
 | `README.md` | Identity — what/why/how it works, standing rules, locked decisions | Scope or a decision changes. Never holds state. |
-| `STATUS.md` | **Current state only** — a `State:` line, dated position lines, the board, waiting-ons, recurring work, inbox, blockers | Every session retire |
+| `STATUS.md` | **Current state only** — a `State:` line, dated position lines, the board, waiting-ons, recurring work, inbox, blockers | Every session retire (plus marker/inbox writes, `SYSTEM.md` §4) |
 | `History/LOG.md` | Session log, chronological, append-only | Every session retire (append) |
 | `History/LESSONS.md` | Append-only lessons (what happened / why / rule going forward) | When a lesson lands |
 | `History/Decisions/` | Numbered decision briefs — a tucked-away historical record, pointed at from README's Locked decisions | When a decision needs research |
@@ -87,7 +87,7 @@ State these briefly; vary only if the user pushes back (`SYSTEM.md` §10): light
 ## Phase 2 — Install
 
 1. Create the template folder at the location from DP-1, named `(PROJECT TEMPLATE)/`, containing the files from `templates/` — use the table in `templates/README.md` for which files install and what each is renamed to (e.g. `PROJECT-README.md` → `README.md`). Adapt wording minimally — only rename terms that clash with vocabulary the user already uses; otherwise copy as-is.
-2. Create the workspace files beside the projects: `PORTFOLIO.md` (from `templates/PORTFOLIO.md`, one row per existing project if any), an empty workspace `LESSONS.md`, and a copy of `SYSTEM.md` **minus its §12** — the spec must survive this kit and be readable by any AI that opens the workspace.
+2. Create the workspace files beside the projects: `PORTFOLIO.md` (from `templates/PORTFOLIO.md`, one row per existing project if any), an empty workspace `LESSONS.md` (DP-5 = A), `REVIEW.md` (the weekly-review format reference), and a copy of `SYSTEM.md` **minus its §12** — the spec and its rituals must survive this kit and be readable by any AI that opens the workspace.
 3. **Wire it into your own standing instructions** — this is the step that makes it stick. Add to the user's instructions file (`CLAUDE.md`, `AGENTS.md`, custom instructions — whatever your platform reads every session), merged into what's already there. *Watch scope:* some platforms' instruction files are workspace-scoped (e.g. Cursor rules apply only when that folder is open) — place the file where the projects live, and tell the user the convention fires only there:
    - "The rules live in `SYSTEM.md` (workspace root). Files are authoritative — if platform memory conflicts with them, the file wins."
    - "New project → copy `(PROJECT TEMPLATE)/`, fill in README + STATUS."
