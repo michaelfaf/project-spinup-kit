@@ -35,9 +35,9 @@ A project is a folder. Its files, their jobs, and their boundaries:
 | `README.md` | Identity: what/why/how it works, standing rules, locked decisions | Scope or a decision changes | Current state |
 | `STATUS.md` | Current state only: dated position line(s), the board, blockers / open decisions | Every session retire | History, rationale, or anything failing the STATUS test |
 | `History/LOG.md` | Rolling session log, newest first, one entry per session | Every session retire (append) | — |
-| `History/LESSONS.md` *(per configuration, DP-5)* | Append-only lessons: what happened / why / rule going forward | When a lesson lands | Edits to past entries |
-| `NEXT-CHAT.md` *(per configuration, DP-4)* | The opening prompt for the next session: where we are, decided, do next, open threads | Written/rewritten at retire while a multi-session push is live; **deleted when the push ends** | Narrative |
-| `History/` decision briefs *(per configuration, DP-5 = C)* | One numbered brief per researched decision, ending in a *lean, never a ruling* — the human rules | When a decision needs research | Rulings |
+| `History/LESSONS.md` *(per configuration, DP-5 = B or C)* | Append-only lessons: what happened / why / rule going forward | When a lesson lands | Edits to past entries |
+| `NEXT-CHAT.md` *(per configuration, DP-4 = A)* | The opening prompt for the next session: where we are, decided, do next, open threads | Written/rewritten at retire while a multi-session push is live; **deleted when the push ends** | Narrative |
+| Decision briefs *(per configuration, DP-5 = C; home directory not yet standardized)* | One numbered brief per researched decision, ending in a *lean, never a ruling* — the human rules | When a decision needs research | Rulings |
 
 **The STATUS test.** Applied to `STATUS.md` constantly: *"Would an agent loading current
 state need this paragraph?"* No → it moves to `History/` at the next retire. A STATUS
@@ -77,14 +77,16 @@ Every working session, in order:
 5. **Ship Check** — per configuration (DP-3), run the gate in §5 after executing.
 6. **Retire** — in order: (a) update STATUS's dated position line; (b) tick the board
    and sweep anything failing the STATUS test to `History/`; (c) append the session to
-   `History/LOG.md`; (d) write the handoff per configuration (DP-4); (e) if something
-   taught a lesson, append it to `History/LESSONS.md` and propose any promotion (§6).
+   `History/LOG.md`; (d) write the handoff per configuration (DP-4); (e) per
+   configuration (DP-5 = B or C): if something taught a lesson, append it to
+   `History/LESSONS.md` and propose any promotion (§6).
 
 ## 5. Quality gates
 
-Gates are run by fresh eyes: a fresh-context subagent that never saw the working
-conversation where the platform can spawn one; otherwise the AI reviews itself against
-these checklists verbatim. Strength is per configuration (DP-3).
+Gates are run by fresh eyes. Which kind is per configuration (DP-3): under **A**, each
+gate runs in a fresh-context subagent that never saw the working conversation; under
+**B**, the AI reviews itself against these checklists verbatim; under **C**, gates are
+skipped.
 
 **Plan Check** (after planning, before execution — premise first, correctness last):
 1. Is the premise right — is there a simpler or higher-level way to get the outcome?
@@ -119,11 +121,11 @@ recommendations live in `IMPLEMENT.md` Phase 1:
 
 | Axis | Decision | Legal values |
 |---|---|---|
-| DP-1 | Where projects live | existing workspace · dedicated folder · chat-managed — plus sub-decision: git yes/no |
-| DP-2 | Default depth per project | light · full from day one |
-| DP-3 | Quality gates | subagent gates · self-review gates · none |
-| DP-4 | Session handoff | `NEXT-CHAT.md` file · platform memory · manual paste |
-| DP-5 | History depth | LOG only · LOG + LESSONS · LOG + LESSONS + decision briefs |
+| DP-1 | Where projects live | **A** existing workspace · **B** dedicated folder · **C** chat-managed — plus sub-decision: git yes/no |
+| DP-2 | Default depth per project | **A** light · **B** full from day one |
+| DP-3 | Quality gates | **A** subagent gates · **B** self-review gates · **C** none |
+| DP-4 | Session handoff | **A** `NEXT-CHAT.md` file · **B** platform memory · **C** manual paste |
+| DP-5 | History depth | **A** LOG only · **B** LOG + LESSONS · **C** LOG + LESSONS + decision briefs |
 
 ## 9. Verification: the cold-read test
 
@@ -144,5 +146,6 @@ workspace.*
 | `README.md` | The pitch; how to use the kit | All system rules |
 | `OVERVIEW.md` | Explanation: concepts, rationale, what a week looks like | All system rules |
 | `IMPLEMENT.md` | Install procedure; DP option prose, trade-offs, recommendations | Rule content it installs |
+| `AGENTS.md` / `CLAUDE.md` | Agent entry point; rules of engagement for the installer | All system rules |
 | `templates/` | Concrete file shapes | The jobs and boundaries in §2–§3 |
 | `STATUS.md` (kit root) | This kit's install progress | — |

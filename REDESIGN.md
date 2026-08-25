@@ -1,6 +1,8 @@
 # REDESIGN — proposals for the next version
 
-> **Working document — do not merge to main; delete before release.** This is the
+> **Working document — do not merge to main; delete before release.** This file sits
+> on the same branch as the SYSTEM.md work, so merging that branch as-is ships it:
+> before merging, delete this file in a final commit (Mike's call on timing). This is the
 > redesign review Mike asked for: recommendations from two independent fresh-context
 > reviews (a systems-design critique and a docs-consistency sweep) plus the
 > orchestrator's synthesis. Nothing here is implemented; every item waits on Mike.
@@ -13,7 +15,7 @@
 - **Tier 2 — real changes, your approval required.** Each changes a rule, a template,
   or how the system works. Recommended, with cost/risk stated.
 - **Tier 3 — genuinely unsure.** Open design questions where I won't pretend to have
-  the answer; options given, no ruling.
+  the answer; options given, a lean at most, never a ruling.
 
 ---
 
@@ -26,20 +28,27 @@ what the system *means*:
   Phase 3), and 3 steps (IMPLEMENT intro). Align all to SYSTEM.md §4's six steps.
 - Only the first gate is marked "(optional)" in OVERVIEW; DP-3 governs both. Mark both.
 - NEXT-CHAT.md's write condition ("only while a multi-session push is live") appears
-  only in the template; OVERVIEW/IMPLEMENT imply every retire. Add the qualifier.
+  only in the template and SYSTEM.md §2; OVERVIEW/IMPLEMENT still imply every retire.
+  Add the qualifier.
 - DP-2 "Full: all files pre-created" contradicts templates/README.md ("NEXT-CHAT.md —
   not pre-created"). Add the exception to DP-2.
-- The STATUS test says "agent" in two files and "AI" in the template. Pick "agent".
+- The STATUS test says "agent" in three files (SYSTEM, OVERVIEW, IMPLEMENT) and "AI"
+  in the template. Pick "agent". Same class of drift: SYSTEM/OVERVIEW say "retire"
+  where the STATUS template and IMPLEMENT's intro say "session exit" — pick one.
 - IMPLEMENT's intro file table presents LESSONS as unconditional and omits NEXT-CHAT;
   both are configuration-dependent. Mark them.
-- IMPLEMENT Phase 2 says files are gated on "DP-2/DP-5"; the actual gating (in
-  templates/README.md) is DP-4/DP-5. Correct it, and have Phase 2 point at
-  templates/README.md explicitly — today that mapping table (including the
+- IMPLEMENT Phase 2 says files are gated on "DP-2/DP-5", and templates/README.md's
+  own intro line repeats the same error ("depends on DP-2 and DP-5"); the actual
+  gating in that file's table is DP-4/DP-5. Correct both sites, and have Phase 2 point
+  at templates/README.md explicitly — today that mapping table (including the
   PROJECT-README.md → README.md rename) is orphaned; a literal installer AI is never
   told to open it and could install wrongly-named files.
-- Define "push" on first use in IMPLEMENT (it's only defined in OVERVIEW); gloss "the
-  source system" (undefined antecedent); README calls `History` a *file*; AGENTS.md's
-  summary omits Phases 3–4.
+- LOG.md's creation time is stated three ways: templates/README.md says install
+  "always", DP-2 light says "empty History/", SYSTEM.md §2 says "from the first
+  retired session". Make them agree (suggest: created at first retire under light).
+- Define "push" on first use in IMPLEMENT and OVERVIEW (it's defined only in
+  SYSTEM.md §3); gloss "the source system" (undefined antecedent); README calls
+  `History` a *file*; AGENTS.md's summary omits Phases 3–4.
 - Deduplicate: the one-file rule, the STATUS test, the promotion rule, the briefs
   "lean, never a ruling" phrase, and NEXT-CHAT's lifecycle are each stated in full in
   2–3 places. Now that SYSTEM.md is the owner, collapse the copies to pointers.
@@ -48,27 +57,33 @@ what the system *means*:
 
 ### R2. Ship the missing Decision Brief template
 DP-5 option C sells a "numbered brief" tier; templates/ contains no brief template, no
-home directory, no link to README's Locked decisions table. A user choosing C has
-nothing to copy. Add `templates/DECISION-BRIEF.md` (context · options · evidence ·
-lean), a home (`Decisions/NNN-topic.md` or `History/`), and the closing rule: a ruled
-brief writes one row into README's Locked decisions and the brief becomes history.
-Same bundle: define or delete "superseded docs" (promised in PROJECT-README's Pointers,
-exists nowhere).
+standardized home directory, no link to README's Locked decisions table. A user
+choosing C has nothing to copy. Tier 1 part: add `templates/DECISION-BRIEF.md`
+(context · options · evidence · lean). Same bundle: define or delete "superseded docs"
+(promised in PROJECT-README's Pointers, exists nowhere). **Not Tier 1** — two pieces
+of this need your approval because they're new design decisions, so they're listed
+under Q4: the home directory choice (`Decisions/NNN-topic.md` vs `History/`) and the
+closing rule (a ruled brief writes one row into README's Locked decisions and the
+brief becomes history).
 
-*Cost/risk: none — fills a documented promise.*
+*Cost/risk: none for the template itself — fills a documented promise.*
+
+---
+
+## Tier 2 — real changes, recommended, need your approval
 
 ### R3. Files beat platform memory, explicitly
 Memory features now run concurrently with files on every major platform and will
 eventually contradict STATUS invisibly (e.g. remembering a since-reversed decision).
 One installed rule: "Files are authoritative. If platform memory conflicts with
 README/STATUS, the file wins and the memory is corrected." One line in SYSTEM.md §1
-and the Phase 2 instructions block.
+and the Phase 2 instructions block. (This is Tier 2, not Tier 1: invariant I1 only
+says files must not be the *sole* home — a conflict-precedence rule is genuinely new,
+and it partly undercuts DP-4 option B, which today makes platform memory a legal
+handoff mechanism. Approving R3 should also decide whether DP-4 B stays a legal
+value.)
 
-*Cost/risk: none — it's already the system's implicit position (I1); this states it.*
-
----
-
-## Tier 2 — real changes, recommended, need your approval
+*Cost/risk: one line; the DP-4 B interaction is the only real decision in it.*
 
 ### R4. A close-out checklist — the highest-value small change
 Today the *optional* gates have the only checklists in the kit, while the
@@ -76,8 +91,8 @@ Today the *optional* gates have the only checklists in the kit, while the
 backwards. Make retire a literal 9-item binary checklist (position line has today's
 real date · board matches reality · blockers current · decisions made this session →
 README Locked decisions · scope changes → README · lessons → LESSONS · LOG appended ·
-handoff written-or-deleted · portfolio row updated), shipped in the template and
-SYSTEM.md §4.
+handoff written-or-deleted · portfolio row updated **(this last item only if R6
+lands; without R6 it's an 8-item list)**), shipped in the template and SYSTEM.md §4.
 
 *Cost: one minute per session. Risk: essentially none. If you approve only one Tier 2
 item, make it this one.*
@@ -232,6 +247,9 @@ Both defensible; (b) is simpler and honest.
 - **Rename the kit's root STATUS.md** (e.g. `INSTALL-STATUS.md`) so it stops
   name-colliding with the per-project STATUS.md it teaches — or reshape it to follow
   its own template as dogfooding.
+- **Decision-brief home and closing rule** (split out of R2): where briefs live
+  (`Decisions/NNN-topic.md` vs `History/`), and whether a ruled brief writes a row
+  into README's Locked decisions before becoming history.
 
 ---
 
