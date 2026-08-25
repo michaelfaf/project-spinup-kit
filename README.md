@@ -39,6 +39,7 @@ Read `IMPLEMENT.md` yourself — every step is doable by hand. The decision poin
 | File | What it is |
 |---|---|
 | `OVERVIEW.md` | The full explanation — read this first to understand the system before installing |
+| `SYSTEM.md` | The normative spec — the system's rules in one place; where documents disagree, it wins |
 | `IMPLEMENT.md` | The full setup walkthrough (written for your AI to execute, readable by humans) |
 | `STATUS.md` | Progress checklist — your AI checks things off and records your decisions here |
 | `AGENTS.md` / `CLAUDE.md` | Entry points so coding agents auto-orient when opening this repo |

@@ -4,7 +4,7 @@
 
 ## What you are installing
 
-A convention where every project is a folder with a tiny, fixed file set:
+The system defined normatively in `SYSTEM.md` — a convention where every project is a folder with a tiny, fixed file set:
 
 | File | Job | Updated when |
 |---|---|---|

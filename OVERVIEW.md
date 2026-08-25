@@ -1,6 +1,6 @@
 # Understanding the Project Spin-Up System
 
-Read this before installing. It explains what the system is, every concept you'll meet, what a working session looks like, what gets installed, and what your job is versus your AI's. `IMPLEMENT.md` is the how; this is the what and why.
+Read this before installing. It explains what the system is, every concept you'll meet, what a working session looks like, what gets installed, and what your job is versus your AI's. `IMPLEMENT.md` is the how; this is the what and why. This document *explains* the system — the normative rules live in [SYSTEM.md](SYSTEM.md).
 
 ## The problem
 

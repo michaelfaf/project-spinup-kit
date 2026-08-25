@@ -2,7 +2,7 @@
 
 You are looking at an **implementation kit**: this repo is not a codebase to build — it is a guided installer for a project-management system that you will set up *for your user, customized to their environment*.
 
-**Your job:** read `IMPLEMENT.md` and execute it, phase by phase, with your user.
+**Your job:** read `IMPLEMENT.md` and execute it, phase by phase, with your user. The system you are installing is specified in `SYSTEM.md` — that spec is normative; where any document disagrees with it, `SYSTEM.md` wins.
 
 Rules of engagement:
 
