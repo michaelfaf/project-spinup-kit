@@ -22,13 +22,13 @@ A field-tested operating system for running projects with an AI assistant: a sma
 
 1. Clone or download this repo.
 2. Open it with your assistant and say: **"Read IMPLEMENT.md and walk me through setting this up."**
-3. Your AI will scan your setup, walk you through a handful of decisions, install the templates where they belong, and track progress in `STATUS.md`. Recommended model: the most capable one you have access to, at high reasoning effort (e.g. Claude Fable 5 high, or Claude Opus high).
+3. Your AI will scan your setup, walk you through a handful of decisions, install the templates where they belong, and track progress in `INSTALL-STATUS.md`. Recommended model: the most capable one you have access to, at high reasoning effort (e.g. Claude Fable 5 high, or Claude Opus high).
 
 **If you use a chat AI** (claude.ai, ChatGPT) without file access:
 
 1. Paste the contents of `IMPLEMENT.md` (and `SYSTEM.md`, the rules it installs) into a chat.
 2. Say: "Walk me through this. I'll create the files by hand as you go."
-3. Keep `STATUS.md` yourself (a note or doc) and paste it back at the start of each new chat.
+3. Keep `INSTALL-STATUS.md` yourself (a note or doc) and paste it back at the start of each new chat.
 
 **If you have no AI assistant:**
 
@@ -41,7 +41,7 @@ Read `IMPLEMENT.md` and `SYSTEM.md` yourself — every step is doable by hand. T
 | `OVERVIEW.md` | The full explanation — read this first to understand the system before installing |
 | `SYSTEM.md` | The normative spec — the system's rules in one place; where documents disagree, it wins |
 | `IMPLEMENT.md` | The full setup walkthrough (written for your AI to execute, readable by humans) |
-| `STATUS.md` | Progress checklist — your AI checks things off and records your decisions here |
+| `INSTALL-STATUS.md` | Install-progress checklist — your AI checks things off and records your decisions here |
 | `AGENTS.md` / `CLAUDE.md` | Entry points so coding agents auto-orient when opening this repo |
 | `templates/` | The project file templates you'll install |
 
@@ -49,4 +49,6 @@ Read `IMPLEMENT.md` and `SYSTEM.md` yourself — every step is doable by hand. T
 
 - A project-template folder in your workspace your AI copies for every new project
 - A convention: identity in `README.md`, current state in `STATUS.md`, everything else in `History/`
-- A session protocol your AI follows: enter with context, retire with a clean handoff — so no chat session ever strands your work
+- A session protocol your AI follows: enter with context, retire through a checklist — so no chat session ever strands your work
+- A portfolio file and a weekly AI-run review, so nothing across your projects rots unseen
+- The system's rulebook (`SYSTEM.md`) installed in your workspace, readable by any AI you point at it

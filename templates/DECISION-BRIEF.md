@@ -1,8 +1,10 @@
 # Brief NNN — <decision title>
 
-<!-- One brief per researched decision (DP-5 = C), numbered in the order raised.
-A brief ends in a lean, never a ruling — the user rules. Where briefs live is
-your install's convention — not yet standardized. -->
+<!-- One brief per researched decision, numbered in the order raised, filed at
+History/Decisions/NNN-topic.md — a tucked-away historical record, not a working file.
+A brief ends in a lean, never a ruling — the user rules. When ruled, add a row to the
+project README's Locked decisions table pointing at this brief; the ruling lives
+there, never in here. -->
 
 ## Question
 

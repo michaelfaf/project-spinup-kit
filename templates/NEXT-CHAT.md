@@ -1,17 +1,12 @@
-<!-- Written at session retire when a multi-session push is live; deleted when the push ends.
-This file IS the opening prompt for the next session — decisions made, unresolved threads,
-next actions. Not narrative. -->
+<!-- Written at retire while a multi-session push is live; deleted when the push ends.
+Only what the next session CANNOT get from STATUS — never restate position, board,
+log, or blockers. If this file disagrees with STATUS, STATUS wins: delete this and
+re-derive. -->
 
 # Next session — <PROJECT NAME>
 
-Read this project's README.md and STATUS.md first.
+Read README.md + STATUS.md first — they are the state; this is only the thread.
 
-**Where we are:** <one dated line>
+**Start with:** <the first concrete action>
 
-**Decided last session:** <bullets>
-
-**Do next:** <the first concrete action>
-
-**Open threads:** <anything unresolved>
-
-*Session protocol: enter by reading README + STATUS; retire by updating STATUS, appending History/LOG, and rewriting this file.*
+**Watch out for:** <the thing not visible in STATUS — a gotcha, a half-formed idea, a promise made>
